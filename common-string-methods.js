@@ -66,38 +66,40 @@ Complete the following tasks and assign the results to the specified variables. 
 */
 
 //Starter Code
-let inputString = "  Welcome to the Coding Bootcamp! Learn JavaScript today.  ";
+// Using the exact string from the prompt (single leading/trailing space, newline before "today.")
+let inputString = " Welcome to the Coding Bootcamp! Learn JavaScript\ntoday. ";
 
 // 1. Searching
-let hasJavaScript; // Your code here
-let codingPosition; // Your code here
-let startsWithWelcome; // Your code here
-let endsWithToday; // Your code here
+let hasJavaScript = inputString.includes('JavaScript');
+let codingPosition = inputString.indexOf('Coding');
+// Use trimmed string for startsWith/endsWith checks
+let startsWithWelcome = inputString.trim().startsWith('Welcome');
+let endsWithToday = inputString.trim().endsWith('today.');
 
 // 2. Transforming
-let lowercaseString; // Your code here
-let uppercaseString; // Your code here
-let trimmedString; // Your code here
-let replacedString; // Your code here
+let lowercaseString = inputString.toLowerCase();
+let uppercaseString = inputString.toUpperCase();
+let trimmedString = inputString.trim();
+let replacedString = trimmedString.replace('JavaScript', 'coding');
 
 // 3. Breaking Apart
-let wordsArray; // Your code here
+// Replace newlines with a space then split on single space; filter out empty entries caused by extra spaces
+let wordsArray = trimmedString.replace(/\n/g, ' ').split(' ').filter(Boolean);
 
 // 4. Retrieving
-let firstCharacter; // Your code here
-let extractedBootcamp; // Your code here
+let firstCharacter = trimmedString.charAt(0);
+const bootcampStart = trimmedString.indexOf('Bootcamp');
+let extractedBootcamp = bootcampStart !== -1 ? trimmedString.slice(bootcampStart, bootcampStart + 'Bootcamp'.length) : '';
 
-// Log all results
-console.log({
-  hasJavaScript,
-  codingPosition,
-  startsWithWelcome,
-  endsWithToday,
-  lowercaseString,
-  uppercaseString,
-  trimmedString,
-  replacedString,
-  wordsArray,
-  firstCharacter,
-  extractedBootcamp,
-});
+// Log each result individually (as requested)
+console.log('hasJavaScript:', hasJavaScript);
+console.log('codingPosition:', codingPosition);
+console.log('startsWithWelcome:', startsWithWelcome);
+console.log('endsWithToday:', endsWithToday);
+console.log('lowercaseString:', lowercaseString);
+console.log('uppercaseString:', uppercaseString);
+console.log('trimmedString:', trimmedString);
+console.log('replacedString:', replacedString);
+console.log('wordsArray:', wordsArray);
+console.log('firstCharacter:', firstCharacter);
+console.log('extractedBootcamp:', extractedBootcamp);
